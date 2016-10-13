@@ -79,7 +79,7 @@ func (cmw *ConfigmapWatcher) watch() error {
 		return err
 	}
 
-	sel := generic.ObjectMetaFieldsSet(cm.ObjectMeta, true)
+	sel := generic.ObjectMetaFieldsSet(&cm.ObjectMeta, true)
 	w, err := cmw.kubeClient.ConfigMaps(cmw.namespace).Watch(api.ListOptions{
 		FieldSelector: sel.AsSelector(),
 	})

@@ -78,7 +78,7 @@ func (cmw *SecretWatcher) watch() error {
 		return err
 	}
 
-	sel := generic.ObjectMetaFieldsSet(sec.ObjectMeta, true)
+	sel := generic.ObjectMetaFieldsSet(&sec.ObjectMeta, true)
 	w, err := cmw.kubeClient.Secrets(cmw.namespace).Watch(api.ListOptions{
 		FieldSelector: sel.AsSelector(),
 	})
